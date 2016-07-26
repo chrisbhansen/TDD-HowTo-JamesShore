@@ -5,7 +5,7 @@
     var semver = require("semver");
 
     desc("Default build");
-    task("default", [ "version" ], function() {
+    task("default", [ "version", "lint" ], function() {
         console.log("\n\nBUILD OK");
     });
 
@@ -21,6 +21,13 @@
             fail("Incorrect Node version: expected " + expectedVersion + ", but was " + actualVersion);
         }
     });
+
+    desc("Lint JavaScript code");
+    task("lint", function() {
+        console.log("Linting JavaScript: .");
+
+        jake.exec("node node_modules/jshint/bin/jshint Jakefile.js", { interacative: true }, complete);
+    }, { async: true });
 
 }());
 
