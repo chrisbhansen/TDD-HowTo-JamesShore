@@ -6,3 +6,6 @@
 
 # npm
 node_modules/**/.bin/
+
+# Karma binaries
+node_modules/fsevents/lib/binding/Release/node-v48-darwin-x64/
