@@ -61,7 +61,13 @@
     task("test", function() {
        console.log("Testing JavaScript:");
         karma.run({
-            configFile: KARMA_CONFIG
+            configFile: KARMA_CONFIG,
+            expectedBrowsers: [
+                "Chrome 51.0.2704 (Mac OS X 10.11.6)",
+                "Safari 9.1.2 (Mac OS X 10.11.6)",
+                "Firefox 47.0.0 (Mac OS X 10.11.0)"
+            ],
+            strict: !process.env.loose
         }, complete, fail);
     }, { async: true });
 
