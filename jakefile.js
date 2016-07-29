@@ -9,6 +9,7 @@
     var karma = require("simplebuild-karma");
 
     var KARMA_CONFIG = "karma.conf.js";
+    var DIST_DIR = "generated/dist";
 
     //**** General-purpose tasks
 
@@ -26,9 +27,14 @@
     });
 
     desc("Run a localhost server");
-    task("run", function() {
-        jake.exec("node node_modules/.bin/http-server src", { interactive: true }, complete, fail);
+    task("run", [ "build" ], function() {
+        jake.exec("node node_modules/.bin/http-server DIST_DIR", { interactive: true }, complete, fail);
     }, { async: true });
+
+    desc("Erase all generated files");
+    task("clean", function() {
+        console.log("Erasing generated files: .");
+    });
 
     //**** Supporting tasks
 
@@ -63,14 +69,21 @@
         karma.run({
             configFile: KARMA_CONFIG,
             expectedBrowsers: [
-                "Chrome 51.0.2704 (Mac OS X 10.11.6)"
-                //"Safari 9.1.2 (Mac OS X 10.11.6)",
-                //"Firefox 47.0.0 (Mac OS X 10.11.0)",
-                //"Mobile Safari 9.0.0 (iOS 9.3.0)"
+                "Chrome 51.0.2704 (Mac OS X 10.11.6)",
+                "Safari 9.1.2 (Mac OS X 10.11.6)",
+                "Firefox 47.0.0 (Mac OS X 10.11.0)",
+                "Mobile Safari 9.0.0 (iOS 9.3.0)"
             ],
             strict: !process.env.loose
         }, complete, fail);
     }, { async: true });
+
+    desc("Build distribution directory");
+    task("build", [ DIST_DIR ], function() {
+        console.log("Bulding distribution directory: ");
+    });
+
+    directory(DIST_DIR);
 
     function lintOptions() {
         return {
