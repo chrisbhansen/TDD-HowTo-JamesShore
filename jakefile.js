@@ -1,5 +1,5 @@
 /*** Created by chrishansen on 7/25/16.***/
-/* globals jake:false, desc:false, task:false, complete:false, fail:false */
+/* globals jake:false, desc:false, task:false, complete:false, fail:false, directory:false */
 
 (function () {
     "use strict";
@@ -29,7 +29,7 @@
 
     desc("Run a localhost server");
     task("run", [ "build" ], function() {
-        jake.exec("node node_modules/.bin/http-server DIST_DIR", { interactive: true }, complete, fail);
+        jake.exec("node node_modules/.bin/http-server  " + DIST_DIR, { interactive: true }, complete);
     }, { async: true });
 
     desc("Erase all generated files");
@@ -90,9 +90,8 @@
         jake.exec(
             "node node_modules/browserify/bin/cmd.js src/javascript/app.js -o " + DIST_DIR + "/bundle.js",
             { interactive: true },
-            complete
-        );
-    });
+            complete);
+    }, { async: true });
 
     directory(DIST_DIR);
 
