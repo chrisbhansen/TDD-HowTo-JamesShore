@@ -58,7 +58,7 @@
         process.stdout.write("Linting JavaScript: ");
 
         jshint.checkFiles({
-            files:  [ "Jakefile.js", "src/**/*.js" ],
+            files:  [ "Jakefile.js", "src/javascript/**/*.js" ],
             options: lintOptions(),
             globals: lintGlobals()
 
@@ -82,16 +82,17 @@
 
     desc("Build distribution directory");
     task("build", [ DIST_DIR ], function() {
-        console.log("Bulding distribution directory: .");
+        console.log("Building distribution directory: .");
 
         shell.rm("-rf", DIST_DIR + "/*");
-        shell.cp("src/index.html", DIST_DIR);
+        shell.cp("src/content/*", DIST_DIR);
 
         jake.exec(
-            "node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js",
+            "node node_modules/browserify/bin/cmd.js src/javascript/app.js -o " + DIST_DIR + "/bundle.js",
             { interactive: true },
-            complete);
-    }, { async: true });
+            complete
+        );
+    });
 
     directory(DIST_DIR);
 
