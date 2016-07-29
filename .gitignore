@@ -7,5 +7,8 @@
 # npm
 node_modules/**/.bin/
 
+# generated files
+generated/
+
 # Karma binaries
 node_modules/fsevents/lib/binding/Release/node-v48-darwin-x64/
