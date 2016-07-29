@@ -71,10 +71,10 @@
         karma.run({
             configFile: KARMA_CONFIG,
             expectedBrowsers: [
-                "Chrome 51.0.2704 (Mac OS X 10.11.6)",
-                "Safari 9.1.2 (Mac OS X 10.11.6)",
-                "Firefox 47.0.0 (Mac OS X 10.11.0)",
-                "Mobile Safari 9.0.0 (iOS 9.3.0)"
+                "Chrome 51.0.2704 (Mac OS X 10.11.6)"
+                //"Safari 9.1.2 (Mac OS X 10.11.6)",
+                //"Firefox 47.0.0 (Mac OS X 10.11.0)",
+                //"Mobile Safari 9.0.0 (iOS 9.3.0)"
             ],
             strict: !process.env.loose
         }, complete, fail);
@@ -86,7 +86,12 @@
 
         shell.rm("-rf", DIST_DIR + "/*");
         shell.cp("src/index.html", DIST_DIR);
-    });
+
+        jake.exec(
+            "node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js",
+            { interactive: true },
+            complete);
+    }, { async: true });
 
     directory(DIST_DIR);
 
