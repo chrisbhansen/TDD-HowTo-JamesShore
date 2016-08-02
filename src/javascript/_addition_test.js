@@ -17,4 +17,12 @@
 
     });
 
+    describe("Subtraction", function(){
+
+       it("subtracts positive numbers", function() {
+           assert.equal(addition.subtract(10, 3), 7);
+       });
+
+    });
+
 }());
