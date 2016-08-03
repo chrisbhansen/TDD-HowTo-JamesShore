@@ -1,9 +1,6 @@
+Deal with clicks?
+
 Mark a tab as active
 
-Hide all inactive content divs
+Not hide active content div
 
-Hide one inactive content div
-
-User classList instead of getAttribute("class") in _tabs_test?
-
-Eliminate duplication in _tabs_test class test
