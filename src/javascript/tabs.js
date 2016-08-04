@@ -43,11 +43,11 @@
 
     }
 
-    function findIndex(contentTabs, defaultContentTab) {
+    function findIndex(contentTabs, tabToShow) {
         for (var i = 0; i < contentTabs.length; i++) {
-            if (contentTabs[i] === defaultContentTab) return i;
+            if (contentTabs[i] === tabToShow) return i;
         }
-        throw new Error("Could not find default in list");
+        throw new Error("Could not find tab to show: " + tabToShow.outerHTML);
     }
 
     function checkOption(option, name) {
