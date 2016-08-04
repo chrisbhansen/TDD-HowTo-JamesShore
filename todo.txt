@@ -2,5 +2,8 @@ Deal with clicks?
 
 Mark a tab as active
 
-Not hide active content div
+Rename "contentHideClass" --> "hiddenContentClass"
 
+Change "default" to refer to tab rather than content element?
+
+Finish "active tab" code - now hardcoded to use first element
