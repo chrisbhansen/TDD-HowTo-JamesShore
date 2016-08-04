@@ -1,3 +1,7 @@
 Deal with clicks?
 
-Mark a tab as active
+Factor out classes in tests
+
+Factor out 'hidden' vs. 'not hidden' assertions?
+
+And 'active tab' vs. 'not active tab' assertions?
