@@ -86,9 +86,9 @@
         }
 
         function createTabContent() {
-            var tab = addElement("div");
-            tab.innerHTML = "content";
-            return tab;
+            var tabContent = addElement("div");
+            tabContent.innerHTML = "content";
+            return tabContent;
         }
 
         function addElement(tagName) {
