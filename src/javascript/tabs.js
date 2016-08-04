@@ -21,13 +21,21 @@
         if (activeTabClass === undefined) throw new Error("Expected options.activeTabClass");
         if (contentHideClass === undefined) throw new Error("Expected options.contentHideClass");
 
-
         content.forEach(function(element) {
            element.classList.add(contentHideClass);
         });
+
         defaultElement.classList.remove(contentHideClass);
 
-        tabs[0].classList.add(activeTabClass);
+        var activeIndex = findIndexOfDefaultElement(content, defaultElement);
+        tabs[activeIndex].classList.add(activeTabClass);
     };
+
+    function findIndexOfDefaultElement(contentTabs, defaultContentTab) {
+        for (var i = 0; i < contentTabs.length; i++) {
+            if (contentTabs[i] === defaultContentTab) return i;
+        }
+        throw new Error("Could not find default in list");
+    }
 
 }());
